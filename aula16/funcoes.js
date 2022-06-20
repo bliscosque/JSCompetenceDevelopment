@@ -41,3 +41,20 @@ function conta(acumulador,...numeros) {
     console.log(acumulador)
 }
 conta(0,10,20,30)
+
+
+function criaPessoa(nome, sobrenome) {
+    return {nome,sobrenome}
+}
+const p1=criaPessoa('Joao','Alberto')
+console.log(p1)
+
+function criaMultiplicador(multiplicador) {
+    return function(n) {
+        return n*multiplicador;
+    }
+}
+const duplica=criaMultiplicador(2)
+const quintuplica=criaMultiplicador(5)
+console.log(duplica(10))
+console.log(quintuplica(10))
