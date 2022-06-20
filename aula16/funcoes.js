@@ -20,3 +20,24 @@ const obj = {
 }
 obj.falar()
 obj.falar2()
+
+function funcao(a,b,c,d,e,f=0) {
+    console.log(a,b,c,d,e,f)
+}
+funcao(1,2,3)
+
+function f2(a,b=2,c=4) {
+    console.log(a+b+c)
+}
+f2(2,undefined,20)
+
+function fDesestruturizacao({nome,sobrenome,idade}) {
+    console.log(nome,sobrenome,idade)
+}
+fDesestruturizacao({nome: 'Thiago', sobrenome: 'Goncalves', idade: 36})
+
+function conta(acumulador,...numeros) {
+    for (let numero of numeros) acumulador += numero
+    console.log(acumulador)
+}
+conta(0,10,20,30)
