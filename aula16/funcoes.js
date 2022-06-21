@@ -48,7 +48,7 @@ function criaPessoa(nome, sobrenome) {
 }
 const p1=criaPessoa('Joao','Alberto')
 console.log(p1)
-
+ 
 function criaMultiplicador(multiplicador) {
     return function(n) {
         return n*multiplicador;
@@ -58,3 +58,18 @@ const duplica=criaMultiplicador(2)
 const quintuplica=criaMultiplicador(5)
 console.log(duplica(10))
 console.log(quintuplica(10))
+
+console.log('CALLBACK')
+
+function f1() {
+    setTimeout(function() { console.log('f1')},500);
+}
+function f2() {
+    setTimeout(function() { console.log('f2')},1000);
+}
+function f3() {
+    setTimeout(function() { console.log('f3')},800);
+}
+f1();
+f2();
+f3();
