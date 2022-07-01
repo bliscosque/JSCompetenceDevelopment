@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: sans-serif;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        table td, th {
+            border: 1px solid #ccc;
+            padding: 5px;
+            text-align: left;
+        }
+        table caption {
+            caption-side: bottom;
+            font-style: italic;
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <caption>Descricao da tabela</caption>
+        <thead>
+            <tr>
+                <th>Titulo 1</th>
+                <th>Titulo 2</th>
+                <th>Titulo 3</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td colspan="2" rowspan="2">Ocupa 2 colunas e 2 linhas</td>
+                <td>Cont 2</td>
+            </tr>
+            <tr>
+                <td>Cont 3</td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td>Foot 1</td>
+                <td>Foot 2</td>
+                <td>Foot 3</td>
+            </tr>
+        </tfoot>
+    </table>
+</body>
+</html>
