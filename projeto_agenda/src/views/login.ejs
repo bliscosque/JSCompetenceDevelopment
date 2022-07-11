@@ -1,0 +1,53 @@
+<%- include('includes/head'); %>
+<%- include('includes/nav'); %>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-2"></div>
+        <div class="col-lg-8 my-3">
+          <h1 class="text-center">Login</h1>
+          <p class="text-center lead">Faca login ou crie sua conta abaixo</p>
+            <div class="row">
+              <div class="col-lg">
+                <h4>Faca seu cadastro</h4>
+
+                <form action="/login/register" method="POST">
+                  <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                  <div class="mb-3">
+                    <label for="email" class="form-label">Email address</label>
+                    <input type="email" class="form-control" id="email" aria-describedby="emailHelp">
+                    <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                  </div>
+                  <div class="mb-3">
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" class="form-control" id="password">
+                  </div>
+                  <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+
+              </div>
+              <div class="col-lg">
+                <h4>Faca seu login</h4>
+
+                <form action="/login/login" method="POST">
+                  <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                  <div class="mb-3">
+                    <label for="email" class="form-label">Email address</label>
+                    <input type="email" class="form-control" id="email" aria-describedby="emailHelp">
+                    <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                  </div>
+                  <div class="mb-3">
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" class="form-control" id="password">
+                  </div>
+                  <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+
+              </div>
+            </div>
+        </div>
+        <div class="col-lg-2"></div>
+      </div>
+    </div>
+
+<%- include('includes/footer'); %>
