@@ -7,6 +7,9 @@
         <div class="col-lg-8 my-3">
           <h1 class="text-center">Login</h1>
           <p class="text-center lead">Faca login ou crie sua conta abaixo</p>
+
+          <%- include('includes/messages'); %>
+
             <div class="row">
               <div class="col-lg">
                 <h4>Faca seu cadastro</h4>
@@ -15,12 +18,11 @@
                   <input type="hidden" name="_csrf" value="<%= csrfToken %>">
                   <div class="mb-3">
                     <label for="email" class="form-label">Email address</label>
-                    <input type="email" class="form-control" id="email" aria-describedby="emailHelp">
-                    <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                    <input type="email" class="form-control" name="email">
                   </div>
                   <div class="mb-3">
                     <label for="password" class="form-label">Password</label>
-                    <input type="password" class="form-control" id="password">
+                    <input type="password" class="form-control" name="password">
                   </div>
                   <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
