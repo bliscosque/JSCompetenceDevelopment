@@ -19,7 +19,7 @@ const HomeModel= require('../models/HomeModel')
 
 exports.paginaInicial = (req,res) => {
     //req.session.usuario = {nome: 'Thiago', logado: true};
-    console.log(req.session.usuario) // o objeto fica por 7 dias, mesmo se nao tiver o parametro acima
+    //console.log(req.session.usuario) // o objeto fica por 7 dias, mesmo se nao tiver o parametro acima
 
     //define flash message
     //req.flash('info', 'Olá Mundo!'); 
@@ -27,9 +27,12 @@ exports.paginaInicial = (req,res) => {
     //req.flash('success', 'Sucesso!');
 
     //busca a flash message, depois de mostrar uma vez ao usuario, apaga da BD
-    console.log(req.flash('info'));
+    //console.log(req.flash('info'));
 
-    res.render('index'); //nao precisa da extensao -> .ejs
+    res.render('index', {
+        titulo: 'Este será o titulo da página',
+        numeros: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+    }); 
 }
 
 exports.trataPost = (req, res) => {

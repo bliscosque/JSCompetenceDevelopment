@@ -11,7 +11,18 @@
 <body>
 
   <section class="container">
-    <h1>Lorem ipsum dolor sit amet</h1>
+    <h1>
+      
+      <% if (typeof titulo!=='undefined') { %>
+        <%= titulo %>
+      <% } %>
+
+      <p>
+      <% numeros.forEach(num => { %>
+        <%= num %>
+      <% }); %>
+
+    </h1>
   </section>
 
   <script src="./assets/js/bundle.js"></script>
