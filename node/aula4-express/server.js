@@ -13,6 +13,10 @@ const flash=require('connect-flash')
 
 const routes=require('./routes');
 const path=require('path')
+
+const helmet = require('helmet');
+const csrf=require('csurf')
+
 const meuMiddleware=require('./src/middlewares/middleware');
 const { Store } = require('express-session');
 
@@ -22,7 +26,7 @@ const { Store } = require('express-session');
 
 app.use(express.urlencoded({extended:true}));
 app.use(express.static(path.resolve(__dirname, 'public'))); //o conteúdo dessa página é referenciado diretamente a partir do /
-
+app.use(helmet())
 app.use(flash());
 const sessionOptions=session({
     secret: 'ahusadsb c ahasoidjsaidj',
@@ -39,7 +43,10 @@ app.use(sessionOptions);
 
 app.set('views', path.resolve(__dirname, 'src', 'views'));
 app.set('view engine', 'ejs');
-app.use(meuMiddleware); //todas as requisicoes precisam passar pelo meuMiddleware
+app.use(csrf());
+//app.use(meuMiddleware); //todas as requisicoes precisam passar pelo meuMiddleware
+app.use(meuMiddleware.checkCsrfError)
+app.use(meuMiddleware.csrfMiddleware)
 app.use(routes);
 
 

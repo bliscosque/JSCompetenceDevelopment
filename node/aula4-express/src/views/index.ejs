@@ -22,6 +22,12 @@
         <%= num %>
       <% }); %>
 
+      <form action="/" method="post">
+        <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+        <label>Cliente</label>
+        <input type="text" name="cliente">
+        <button>submit</button>
+      </form>
     </h1>
   </section>
 
