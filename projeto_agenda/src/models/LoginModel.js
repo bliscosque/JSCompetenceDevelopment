@@ -47,7 +47,6 @@ class Login {
     this.body.password=bcryptjs.hashSync(this.body.password, salt);
 
     this.user = await LoginModel.create(this.body);
-
   }
   async userExists() {
     this.user = await LoginModel.findOne({email: this.body.email});
