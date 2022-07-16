@@ -20,18 +20,15 @@ class Contato {
   }
 
   async register() {
+    console.log('in register')
     this.valida();
     if (this.errors.length > 0) return;
 
     this.contato = await ContatoModel.create(this.body);
   }
 
-
-
-
   valida() {
     this.cleanUp();
-
     //email valido
     if (this.body.email && !validator.isEmail(this.body.email))
       this.errors.push('E-mail Invalido');
@@ -61,10 +58,24 @@ class Contato {
 
 }
 
+//metodos estaticos
 Contato.buscaPorId = async function (id) {
   if (typeof id !== 'string') return;
-  const user = await ContatoModel.findById(id);
-  return user;
+  const contato = await ContatoModel.findById(id);
+  return contato;
+}
+
+Contato.buscaContatos = async function () {
+  const contatos = await ContatoModel.find().sort({ criadoEm: -1 });
+  console.log(contatos);
+  return contatos;
+}
+
+Contato.delete = async function (id) {
+  if (typeof id !== 'string') return;
+  const contato = await ContatoModel.findOneAndDelete({_id:id});
+  console.log(contato);
+  return contato;
 }
 
 module.exports = Contato;

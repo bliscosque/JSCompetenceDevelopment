@@ -13,7 +13,7 @@
           <% if (contato._id) { %>
             <form action="/contato/edit/<%= contato._id %>" method="POST">
           <% } else { %>
-            <form action="/contato/register" method="POST"></form>
+            <form action="/contato/register" method="POST">
           <% } %>
           
             <input type="hidden" name="_csrf" value="<%= csrfToken %>">
