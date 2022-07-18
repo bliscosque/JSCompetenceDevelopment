@@ -1,0 +1,10 @@
+{
+  "dependencies": {
+    "dotenv": "^16.0.1",
+    "mariadb": "^3.0.0",
+    "sequelize": "^6.21.3"
+  },
+  "devDependencies": {
+    "sequelize-cli": "^6.4.1"
+  }
+}
