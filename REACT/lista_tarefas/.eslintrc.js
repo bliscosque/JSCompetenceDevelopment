@@ -9,7 +9,6 @@ module.exports = {
     'eslint:recommended',
     'plugin:react/recommended',
     'plugin:react-hooks/recommended',
-    'plugin:prettier/recommended',
     'airbnb',
   ],
   parser: '@babel/eslint-parser',
@@ -25,5 +24,7 @@ module.exports = {
   ],
   rules: {
     'react/react-in-jsx-scope': 'off',
+    'react/jsx-filename-extension': 'off',
+    'react/state-in-constructor': 'off',
   },
 };
