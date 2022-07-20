@@ -10,6 +10,21 @@ export default class Main extends Component {
     index: -1,
   };
 
+  componentDidMount() { // ao montar componentes
+    const tarefas = JSON.parse(localStorage.getItem('tarefas'));
+    if (!tarefas) return;
+    this.setState({ tarefas });
+  }
+
+  componentDidUpdate(preProps, prevState) {
+    const { tarefas } = this.state;
+    // console.log(tarefas);
+    if (tarefas !== prevState.tarefas) {
+      // console.log('change in tarefas');
+      localStorage.setItem('tarefas', JSON.stringify(tarefas));
+    }
+  }
+
   handleSubmit = (e) => {
     e.preventDefault();
     const { tarefas, index } = this.state;
