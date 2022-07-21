@@ -1,4 +1,4 @@
-import Aluno from '../models/Aluno';
+// import Aluno from '../models/Aluno';
 
 class HomeController {
   async index(req, res) {
