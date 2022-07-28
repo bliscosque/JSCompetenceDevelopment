@@ -8,4 +8,4 @@ class="teste teste">
 console.log(html2.match(/<(\w+)[\s\S]*?>([\s\S]*?)<\/\1>/g)); // O \1 se refere ao primeiro grupo (equivalente ao $1)
 
 
-console.log(html2.replace(/(<(\w+)(?:[\s\S]*?)>)([\s\S]*?)(<\/\2>)/g, '$1 HAHA $3 HAHA $4'));
+console.log(html2.replace(/(<(\w+)(?:[\s\S]*?)>)([\s\S]*?)(<\/\2>)/g, '$1"$4"$5'));
