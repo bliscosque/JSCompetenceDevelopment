@@ -12,7 +12,13 @@ const connection = new Sequelize('db', 'user', 'pass', {
 })
 
 const User=connection.define('User', {
-    name: Sequelize.STRING,
+    name: {
+        type: Sequelize.STRING,
+        primaryKey: false,
+        defaultValue: '',
+        allowNull: true,
+    },
+
     bio: Sequelize.TEXT,
     newField: Sequelize.STRING,
 })
