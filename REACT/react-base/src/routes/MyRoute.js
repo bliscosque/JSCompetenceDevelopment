@@ -3,7 +3,7 @@ import { Route, Navigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 export default function MyRoute({ element: Element, isClosed, ...rest }) {
-  const isLoggedIn = true; // sera buscado desde o redux
+  const isLoggedIn = false; // sera buscado desde o redux
 
   if (isClosed && !isLoggedIn) {
     return (
