@@ -1,0 +1,10 @@
+links:
+  - description: google
+    link: http://www.google.com
+    category: search
+  - description: bing
+    link: http://www.bing.com
+    category: search
+  - description: uol
+    link: http://www.uol.com.br
+    category: news
