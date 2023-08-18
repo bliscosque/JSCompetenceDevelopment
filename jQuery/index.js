@@ -12,5 +12,32 @@ $(document).ready(function() {
     let link=$("a").attr("href"); //1 param, retorna valor
     $("a").attr("href","http://www.bing.com"); //2 param, seta valor
 
+    $("h1").click(function() {
+        $("h1").css("color","blue");
+    });
+
+    $("button").click(function() { //for all buttons, without needing a loop...
+        $("h1").css("color","blue");
+    })
+
     console.log(link);
+
+    $("input").keypress(function(event) {
+        console.log(event.key);
+    })
+
+    $("h1").on("mouseover",function() {
+        $("h1").css("color","blue");
+    })
+
+    $("h1").before("<button>New_B4</button>");
+    $("h1").after("<button>New_After</button>");
+    $("h1").prepend("<button>New_Prepend</button>");
+    $("h1").append("<button>New_Append</button>");
+
+    $("button").remove();
+
+    $("h1").hide();
+    $("h1").show();
+    $("h1").toggle();
 });
