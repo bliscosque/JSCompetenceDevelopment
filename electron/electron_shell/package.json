@@ -11,10 +11,10 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "electron": "^25.5.0"
+    "electron": "^25.5.0",
+    "electron-rebuild": "^3.2.9"
   },
   "dependencies": {
-    "electron-rebuild": "^3.2.9",
     "node-pty": "^1.0.0",
     "xterm": "^5.2.1"
   }
