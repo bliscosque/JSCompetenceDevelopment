@@ -31,3 +31,6 @@ let todayitems=[
         checked: "checked"
     }
 ]
+
+let workitems=[]
+let personalitems=[]
