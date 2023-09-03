@@ -10,5 +10,24 @@ app.listen(port,() => {
 })
 
 app.get('/',(req,res)=>{
-    res.render('index.ejs')
+    res.render('index.ejs', {todayitems})
 })
+
+app.post('/',(req,res) => {
+    todayitems.push({
+        name: req.body.todoitem,
+        checked: ""
+    })
+    res.render('index.ejs',{todayitems})
+})
+
+let todayitems=[
+    {
+        name: "todo1",
+        checked: ""
+    },
+    {
+        name: "todo2",
+        checked: "checked"
+    }
+]
