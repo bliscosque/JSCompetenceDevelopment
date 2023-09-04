@@ -8,7 +8,13 @@
         <label class="list-group-item d-flex gap-2">
           <input class="form-check-input flex-shrink-0 ckbox" type="checkbox" name=<%- item.name %> value="" <%- item.checked %>>
           <span>
+            <% if (item.checked=="checked") { %>
+                <del>
+            <% } %>
             <%= item.name %>
+            <% if (item.checked=="checked") { %>
+                </del>
+            <% } %>
           </span>
         </label>
         <% }) %>

@@ -14,10 +14,22 @@ app.get('/',(req,res)=>{
 })
 
 app.post('/',(req,res) => {
-    todayitems.push({
-        name: req.body.todoitem,
-        checked: ""
-    })
+    console.log(req.params)
+    console.log(req.body)
+    if (req.body.todoitem) {
+        todayitems.push({
+            name: req.body.todoitem,
+            checked: ""
+        })
+    }
+    else {
+        let compName=req.body.changedItem
+        //console.log('CHANGEITEM')
+        //console.log(compName)
+        const idx=todayitems.findIndex(item => item.name==compName)
+        if (todayitems[idx].checked=="checked") todayitems[idx].checked=""
+        else todayitems[idx].checked="checked"
+    }
     res.render('index.ejs',{todayitems})
 })
 
