@@ -4,7 +4,7 @@ cbs.forEach(cb => {
     cb.addEventListener('click', (ev) => {
         console.log(ev)
         console.log(ev.target.name)
-        post("/", ev.target.name);
+        post("/personal", ev.target.name);
     })
 })
 
@@ -12,7 +12,7 @@ let navItems=document.querySelectorAll('.nav-link')
 navItems.forEach(navItem => {
     navItem.classList.remove('active')
 }) 
-document.querySelector('#today').classList.add('active')
+document.querySelector('#personal').classList.add('active')
 
 window.post = function(url, taskName) {
     console.log(taskName)

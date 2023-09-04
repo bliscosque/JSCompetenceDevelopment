@@ -13,6 +13,14 @@ app.get('/',(req,res)=>{
     res.render('index.ejs', {todayitems})
 })
 
+app.get('/work',(req,res)=>{
+    res.render('work.ejs', {workitems})
+})
+
+app.get('/personal',(req,res)=>{
+    res.render('personal.ejs', {personalitems})
+})
+
 app.post('/',(req,res) => {
     console.log(req.params)
     console.log(req.body)
@@ -31,6 +39,46 @@ app.post('/',(req,res) => {
         else todayitems[idx].checked="checked"
     }
     res.render('index.ejs',{todayitems})
+})
+
+app.post('/work',(req,res) => {
+    console.log(req.params)
+    console.log(req.body)
+    if (req.body.todoitem) {
+        workitems.push({
+            name: req.body.todoitem,
+            checked: ""
+        })
+    }
+    else {
+        let compName=req.body.changedItem
+        //console.log('CHANGEITEM')
+        //console.log(compName)
+        const idx=workitems.findIndex(item => item.name==compName)
+        if (workitems[idx].checked=="checked") workitems[idx].checked=""
+        else workitems[idx].checked="checked"
+    }
+    res.render('work.ejs',{workitems})
+})
+
+app.post('/personal',(req,res) => {
+    console.log(req.params)
+    console.log(req.body)
+    if (req.body.todoitem) {
+        personalitems.push({
+            name: req.body.todoitem,
+            checked: ""
+        })
+    }
+    else {
+        let compName=req.body.changedItem
+        //console.log('CHANGEITEM')
+        //console.log(compName)
+        const idx=personalitems.findIndex(item => item.name==compName)
+        if (personalitems[idx].checked=="checked") personalitems[idx].checked=""
+        else personalitems[idx].checked="checked"
+    }
+    res.render('personal.ejs',{personalitems})
 })
 
 let todayitems=[
