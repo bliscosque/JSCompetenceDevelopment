@@ -1,11 +1,27 @@
-const express = require("express");
-const bodyParser = require("body-parser");
-const date = require(__dirname + "/date.js");
-const mongoose=require('mongoose')
+import express from "express";
+import bodyParser from "body-parser"
+import mongoose, { Mongoose } from 'mongoose'
 
-mongoose.connect()
 
-mongoose.connect('mongodb://127.0.0.1:27017/myapp');
+async function main() {
+  await mongoose.connect('mongodb://127.0.0.1:27017/todoListDB');
+  const itemSchema=new mongoose.Schema({
+    name: String
+  })
+  const Item=mongoose.model("Item",itemSchema)
+  const item1=new Item({
+    name: "Item 1"
+  })
+  const item2=new Item({
+    name: "Item 2"
+  })
+  const item3=new Item({
+    name: "Item 3"
+  })
+  //await Item.insertMany([item1,item2,item3])
+
+}
+main().catch(err => console.log(err))
 
 const app = express();
 
@@ -19,9 +35,7 @@ const workItems = [];
 
 app.get("/", function(req, res) {
 
-const day = date.getDate();
-
-  res.render("list", {listTitle: day, newListItems: items});
+  res.render("list", {listTitle: "Today", newListItems: items});
 
 });
 
