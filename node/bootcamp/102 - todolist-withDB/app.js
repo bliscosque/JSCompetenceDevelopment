@@ -2,22 +2,23 @@ import express from "express";
 import bodyParser from "body-parser"
 import mongoose, { Mongoose } from 'mongoose'
 
+const itemSchema=new mongoose.Schema({
+  name: String
+})
+const Item=mongoose.model("Item",itemSchema)
 
 async function main() {
   await mongoose.connect('mongodb://127.0.0.1:27017/todoListDB');
-  const itemSchema=new mongoose.Schema({
-    name: String
-  })
-  const Item=mongoose.model("Item",itemSchema)
-  const item1=new Item({
-    name: "Item 1"
-  })
-  const item2=new Item({
-    name: "Item 2"
-  })
-  const item3=new Item({
-    name: "Item 3"
-  })
+
+  // const item1=new Item({
+  //   name: "Item 1"
+  // })
+  // const item2=new Item({
+  //   name: "Item 2"
+  // })
+  // const item3=new Item({
+  //   name: "Item 3"
+  // })
   //await Item.insertMany([item1,item2,item3])
 
 }
@@ -33,27 +34,21 @@ app.use(express.static("public"));
 const items = ["Buy Food", "Cook Food", "Eat Food"];
 const workItems = [];
 
-app.get("/", function(req, res) {
-
+app.get ("/", async function(req, res) {
+  const items=await Item.find()
   res.render("list", {listTitle: "Today", newListItems: items});
 
 });
 
-app.post("/", function(req, res){
+app.post("/", async function(req, res){
 
-  const item = req.body.newItem;
+  const itemName = req.body.newItem;
+  const newItem=new Item({
+    name:itemName
+  })
+  await newItem.save()
+  res.redirect("/");
 
-  if (req.body.list === "Work") {
-    workItems.push(item);
-    res.redirect("/work");
-  } else {
-    items.push(item);
-    res.redirect("/");
-  }
-});
-
-app.get("/work", function(req,res){
-  res.render("list", {listTitle: "Work List", newListItems: workItems});
 });
 
 app.get("/about", function(req, res){
