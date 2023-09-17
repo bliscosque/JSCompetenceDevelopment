@@ -51,6 +51,21 @@ app.post("/", async function(req, res){
 
 });
 
+app.post("/delete", async function(req, res){
+
+  const checkedId=req.body.checkbox
+
+  // const itemName = req.body.newItem;
+  // const newItem=new Item({
+  //   name:itemName
+  // })
+  // await newItem.save()
+  // res.redirect("/");
+  await Item.findByIdAndRemove(checkedId).exec()
+
+  res.redirect("/");
+});
+
 app.get("/about", function(req, res){
   res.render("about");
 });
