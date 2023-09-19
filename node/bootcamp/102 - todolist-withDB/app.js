@@ -7,6 +7,12 @@ const itemSchema=new mongoose.Schema({
 })
 const Item=mongoose.model("Item",itemSchema)
 
+const listSchema=new mongoose.Schema({
+  name: String,
+  items: [itemSchema]
+})
+const List=mongoose.model("List",listSchema)
+
 async function main() {
   await mongoose.connect('mongodb://127.0.0.1:27017/todoListDB');
 
@@ -40,6 +46,24 @@ app.get ("/", async function(req, res) {
 
 });
 
+app.get("/:customListName", async function(req,res) {
+  const customListName=req.params.customListName
+  console.log(customListName)
+
+  const l=await List.findOne({name: customListName}).exec()
+  if (!l) {
+    const list=new List({
+      name:customListName,
+      items: []
+    })
+    await list.save()
+    res.render("list", {listTitle: customListName, newListItems: list.items});
+  }
+  else {
+    res.render("list", {listTitle: customListName, newListItems: l.items});
+  }
+})
+
 app.post("/", async function(req, res){
 
   const itemName = req.body.newItem;
@@ -65,6 +89,7 @@ app.post("/delete", async function(req, res){
 
   res.redirect("/");
 });
+
 
 app.get("/about", function(req, res){
   res.render("about");
