@@ -65,13 +65,24 @@ app.get("/:customListName", async function(req,res) {
 })
 
 app.post("/", async function(req, res){
-
   const itemName = req.body.newItem;
+  const listName=req.body.list
+  console.log(listName)
   const newItem=new Item({
     name:itemName
   })
-  await newItem.save()
-  res.redirect("/");
+
+  if (listName==='Today') {
+
+    await newItem.save()
+    res.redirect("/");
+  }
+  else {
+    const foundList=await List.findOne({name:listName}).exec()
+    foundList.items.push(newItem)
+    foundList.save();
+    res.redirect('/'+listName)
+  }
 
 });
 
