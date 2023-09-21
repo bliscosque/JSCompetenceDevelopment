@@ -1,6 +1,7 @@
 import express from "express";
 import bodyParser from "body-parser"
 import mongoose, { Mongoose } from 'mongoose'
+import _ from 'lodash'
 
 const itemSchema=new mongoose.Schema({
   name: String
@@ -47,7 +48,7 @@ app.get ("/", async function(req, res) {
 });
 
 app.get("/:customListName", async function(req,res) {
-  const customListName=req.params.customListName
+  const customListName=_.capitalize(req.params.customListName)
   console.log(customListName)
 
   const l=await List.findOne({name: customListName}).exec()
@@ -89,6 +90,8 @@ app.post("/", async function(req, res){
 app.post("/delete", async function(req, res){
 
   const checkedId=req.body.checkbox
+  const listName=req.body.listName
+  //console.log(listName)
 
   // const itemName = req.body.newItem;
   // const newItem=new Item({
@@ -96,9 +99,15 @@ app.post("/delete", async function(req, res){
   // })
   // await newItem.save()
   // res.redirect("/");
-  await Item.findByIdAndRemove(checkedId).exec()
-
-  res.redirect("/");
+  if (listName=="Today") {
+    await Item.findByIdAndRemove(checkedId).exec()
+    res.redirect("/");
+  }
+  else {
+    await List.findOneAndUpdate({name:listName},{$pull:{items:{_id:checkedId}}}).exec()
+    res.redirect('/'+listName)
+  }
+  
 });
 
 
