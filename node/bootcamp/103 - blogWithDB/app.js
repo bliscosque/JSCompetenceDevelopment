@@ -30,7 +30,9 @@ app.use(express.static("public"));
 
 let posts = [];
 
-app.get("/", function(req, res){
+app.get("/", async function(req, res){
+  posts= await Post.find().exec()
+  //console.log(posts)
   res.render("home", {
     startingContent: homeStartingContent,
     posts: posts
@@ -49,32 +51,28 @@ app.get("/compose", function(req, res){
   res.render("compose");
 });
 
-app.post("/compose", function(req, res){
+app.post("/compose", async function(req, res){
   const post = new Post({
     title: req.body.postTitle,
     content: req.body.postBody
   })
 
-  post.save()
+  await post.save()
 
   res.redirect("/");
 
 });
 
-app.get("/posts/:postName", function(req, res){
-  const requestedTitle = _.lowerCase(req.params.postName);
+app.get("/posts/:postId", async function(req, res){
+  const postId = req.params.postId;
 
-  posts.forEach(function(post){
-    const storedTitle = _.lowerCase(post.title);
-
-    if (storedTitle === requestedTitle) {
-      res.render("post", {
-        title: post.title,
-        content: post.content
-      });
-    }
+  let post=await Post.findById(postId).exec()
+  console.log(post)
+  res.render("post", {
+     title: post.title,
+     content: post.content
   });
-
+    
 });
 
 app.listen(3000, function() {
