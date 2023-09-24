@@ -72,7 +72,6 @@ app.get("/posts/:postId", async function(req, res){
      title: post.title,
      content: post.content
   });
-    
 });
 
 app.listen(3000, function() {
