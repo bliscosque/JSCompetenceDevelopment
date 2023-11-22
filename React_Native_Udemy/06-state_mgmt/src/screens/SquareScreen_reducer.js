@@ -8,11 +8,17 @@ const SquareScreen_reducer=() => {
     //action: {colorToChange: red|green|blue, amt:-15|15}
     switch (action.colorToChange) {
       case 'red':
-        return {...state,red:(state.red+action.amt)}
+        return state.red+action.amt > 255 || state.red+action.amt<0
+        ? state
+        : {...state,red:(state.red+action.amt)}
       case 'green':
-        return {...state,green:(state.green+action.amt)}
+        return state.green+action.amt > 255 || state.green+action.amt<0
+        ? state
+        :  {...state,green:(state.green+action.amt)}
       case 'blue':
-        return {...state,blue:(state.blue+action.amt)}
+        return state.blue+action.amt > 255 || state.blue+action.amt<0
+        ? state
+        :  {...state,blue:(state.blue+action.amt)}
       default:
         return {...state}
     }
