@@ -5,6 +5,7 @@ import ComponentsScreen from "./src/screens/ComponentsScreen";
 import ListScreen from "./src/screens/ListScreen"
 import ImageScreen from "./src/screens/ImageScreen"
 import CounterScreen from "./src/screens/CounterScreen"
+import CounterScreen_reducer from "./src/screens/CounterScreen_reducer";
 import ColorScreen from "./src/screens/ColorScreen"
 import SquareScreen  from "./src/screens/SquareScreen"
 import SquareScreen_reducer from "./src/screens/SquareScreen_reducer"
@@ -22,6 +23,7 @@ const navigator = createStackNavigator(
     Square: SquareScreen,
     Square_reducer: SquareScreen_reducer,
     Square_reducer_community: SquareScreen_reducer_community,
+    Counter_reducer: CounterScreen_reducer,
   },
   {
     initialRouteName: "Home",

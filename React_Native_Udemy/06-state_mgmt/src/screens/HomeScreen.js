@@ -11,10 +11,12 @@ const HomeScreen = ({navigation}) => {
       </TouchableOpacity>
       <Button title="Go to the Image Demo" onPress={() => navigation.navigate("Image")}/>
       <Button title="Go to the Counter Demo" onPress={() => navigation.navigate("Counter")}/>
+      <Button title="Go to the Counter Demo with Reducer" onPress={() => navigation.navigate("Counter_reducer")}/>
       <Button title="Go to the Color Demo" onPress={() => navigation.navigate("Color")}/>
       <Button title="Go to the Square Demo" onPress={() => navigation.navigate("Square")}/>
       <Button title="Go to the Square with reducer Demo" onPress={() => navigation.navigate("Square_reducer")}/>
       <Button title="Go to the Square with reducer, community Demo" onPress={() => navigation.navigate("Square_reducer_community")}/>
+
     </View>
   )
 };
