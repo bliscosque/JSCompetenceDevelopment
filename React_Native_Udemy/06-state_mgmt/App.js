@@ -11,6 +11,7 @@ import SquareScreen  from "./src/screens/SquareScreen"
 import SquareScreen_reducer from "./src/screens/SquareScreen_reducer"
 import SquareScreen_reducer_community from "./src/screens/SquareScreen_reducer_community";
 import TextScreen from "./src/screens/TextScreen";
+import PasswordScreen from "./src/screens/PasswordScreen";
 
 const navigator = createStackNavigator(
   {
@@ -25,6 +26,7 @@ const navigator = createStackNavigator(
     Square_reducer_community: SquareScreen_reducer_community,
     Counter_reducer: CounterScreen_reducer,
     Text: TextScreen,
+    Password: PasswordScreen,
   },
   {
     initialRouteName: "Home",
