@@ -16,6 +16,12 @@ const BoxScreen = () => {
             <Text>Child 3</Text>
         </View>
 
+        <View style={styles.viewParentStyle}>
+            <View style={styles.c1Style} />
+            <View style={styles.c2Style} />
+            <View style={styles.c3Style} />
+        </View>
+
         </View>
     )
 }
@@ -35,6 +41,29 @@ const styles=StyleSheet.create({
         borderWidth: 3,
         flexDirection: 'row',
         alignItems: 'flex-end'
+    },
+    viewParentStyle: {
+        borderWidth: 3,
+        borderColor: 'black',
+        height: 100,
+        flexDirection: 'row',
+        justifyContent: 'space-between'
+    },
+    c1Style: {
+        height: 50,
+        width: 50,
+        backgroundColor: 'red',
+    },
+    c2Style: {
+        height: 50,
+        width: 50,
+        backgroundColor: 'green',
+        alignSelf: "flex-end"
+    },
+    c3Style: {
+        height: 50,
+        width: 50,
+        backgroundColor: 'purple',
     },
  })
 
